@@ -1,3 +1,4 @@
+	<?php get_header();?>
 	<!-- Carrossel de divulgações -->
 	<section>
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -8,13 +9,13 @@
 		  </ol>
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="d-block w-100" src="assets/img/banner-divulgacao.png" alt="Primeiro Slide">
+		      <img class="d-block w-100" src="<?php bloginfo('template_url');?>/assets/img/banner-divulgacao.png" alt="Primeiro Slide">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="assets/img/banner-divulgacao-2.png" alt="Segundo Slide">
+		      <img class="d-block w-100" src="<?php bloginfo('template_url');?>/assets/img/banner-divulgacao-2.png" alt="Segundo Slide">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="assets/img/banner-divulgacao.png" alt="Terceiro Slide">
+		      <img class="d-block w-100" src="<?php bloginfo('template_url');?>/assets/img/banner-divulgacao.png" alt="Terceiro Slide">
 		    </div>
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -58,7 +59,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-1.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-1.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Ações promocionais</p>				  
 					</div>
@@ -67,7 +68,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center ">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-2.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-2.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Treinamentos</p>				  
 					</div>
@@ -76,7 +77,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center ">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-3.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-3.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Participação<br> em eventos</p>				  
 					</div>
@@ -85,7 +86,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center ">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-4.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-4.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Divulgação</p>				  
 					</div>
@@ -94,7 +95,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center ">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-5.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-5.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Networks com<br> empresários</p>				  
 					</div>
@@ -103,7 +104,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center ">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-6.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-6.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Desconto com <br>parceiros conveniados</p>				  
 					</div>
@@ -112,7 +113,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center ">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-7.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-7.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Participação<br> em eventos</p>				  
 					</div>
@@ -121,7 +122,7 @@
 				<div class="col-md-3 col-sm-6 col-6 mt-2">
 					<div class="text-center ">
 					<!-- Imagem do produto -->
-					<img src="assets/img/b-8.png" alt="">
+					<img src="<?php bloginfo('template_url');?>/assets/img/b-8.png" alt="">
 				  	<!-- Descrição do ícone -->
 					<p class="desc-bene">Descontos em<br> eventos patrocinados</p>				  
 					</div>
@@ -140,54 +141,24 @@
 		</div>
 
 		<div class="row">
+			<?php  if(have_posts()) : while(have_posts()) : the_post(); ?>
 			<div class="col-lg-3 mb-5 col-md-4">
 				<!-- Imagem -->
-				<img src="assets/img/image-noticia.png" class="card-img-top rounded-0 border-noticia" alt="...">
+				<img src="<?php the_post_thumbnail('post-thumbnail', array('class'=>'card-img-top rounded-0 border-noticia img-fluid'));?>
 			    <div class="card-body p-0 mt-3">
 			    	<!-- Título -->
-			      <a class="card-title-noticia" href="#">Evento na Assembléia para novas obras</a>
+			      <a class="card-title-noticia" href="<?php the_permalink(); ?>"><?php the_title();?></a>
 			      <!-- Descrição -->
-			      <p class="card-text text-description mt-1">Presença dos membros do conselho para realização do feito em prol da população.</p>
-			      <p class="card-text"><small class="text-muted">Publicado em 05/09/2019</small></p>
+			      <p class="card-text text-deion mt-1"><?php echo the_excerpt();?></p>
+			      <p class="card-text"><small class="text-muted"><?php echo get_the_date('d','m','y');?></small></p>
 			    </div>
-			 </div>			
-			<div class="col-lg-3 mb-5 col-md-4">
-				<!-- Imagem -->
-				<img src="assets/img/image-noticia.png" class="card-img-top rounded-0 border-noticia" alt="...">
-			    <div class="card-body p-0 mt-3">
-			    	<!-- Título -->
-			      <a class="card-title-noticia" href="#">Evento na Assembléia para novas obras</a>
-			      <!-- Descrição -->
-			      <p class="card-text text-description mt-1">Presença dos membros do conselho para realização do feito em prol da população.</p>
-			      <p class="card-text"><small class="text-muted">Publicado em 05/09/2019</small></p>
-			    </div>
-			 </div>
-			<div class="col-lg-3 mb-5 col-md-4">
-				<!-- Imagem -->
-				<img src="assets/img/image-noticia.png" class="card-img-top rounded-0 border-noticia" alt="...">
-			    <div class="card-body p-0 mt-3">
-			    	<!-- Título -->
-			      <a class="card-title-noticia" href="#">Evento na Assembléia para novas obras</a>
-			      <!-- Descrição -->
-			      <p class="card-text text-description mt-1">Presença dos membros do conselho para realização do feito em prol da população.</p>
-			      <p class="card-text"><small class="text-muted">Publicado em 05/09/2019</small></p>
-			    </div>
-			 </div>
-			 <div class="col-lg-3 mb-5 col-md-4">
-				<!-- Imagem -->
-				<img src="assets/img/image-noticia.png" class="card-img-top rounded-0 border-noticia" alt="...">
-			    <div class="card-body p-0 mt-3">
-			    	<!-- Título -->
-			      <a class="card-title-noticia" href="#">Evento na Assembléia para novas obras</a>
-			      <!-- Descrição -->
-			      <p class="card-text text-description mt-1">Presença dos membros do conselho para realização do feito em prol da população.</p>
-			      <p class="card-text"><small class="text-muted">Publicado em 05/09/2019</small></p>
-			    </div>
-			 </div>
+			 </div>	
 
+			<?php endwhile;?>
 			<div class="col-12 text-center">
 				<a href="noticias.html"><button type="submit" class="btn btn-home pl-4 pr-4">Ler mais notícias</button></a>
 			</div>
+			<?php endif; ?>
 		</div>	
 	</section>
 
@@ -202,16 +173,16 @@
 		<div class="row text-center">
 			
 			<div class="col-md-3 col-12 mt-2">
-				<img class="img-fluid" src="assets/img/logo-empresa.png" alt="">
+				<img class="img-fluid" src="<?php bloginfo('template_url');?>/assets/img/logo-empresa.png" alt="">
 			</div>
 			<div class="col-md-3 col-12 mt-2">
-				<img class="img-fluid" src="assets/img/logo-empresa.png" alt="">
+				<img class="img-fluid" src="<?php bloginfo('template_url');?>/assets/img/logo-empresa.png" alt="">
 			</div>
 			<div class="col-md-3 col-12 mt-2">
-				<img class="img-fluid" src="assets/img/logo-empresa.png" alt="">
+				<img class="img-fluid" src="<?php bloginfo('template_url');?>/assets/img/logo-empresa.png" alt="">
 			</div>
 			<div class="col-md-3 col-12 mt-2">
-				<img class="img-fluid" src="assets/img/logo-empresa.png" alt="">
+				<img class="img-fluid" src="<?php bloginfo('template_url');?>/assets/img/logo-empresa.png" alt="">
 			</div>
 
 			<div class="col-12 text-center mt-5">
@@ -219,6 +190,6 @@
 			</div>
 		</div>
 	</section>
-
+	<?php get_footer();?>
 
 	
